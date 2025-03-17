@@ -39,8 +39,6 @@
     "preversion": "npm-run-all docs test",
     "postversion": "git push && git push --tags",
     "deploy": "serverless deploy --aws-s3-accelerate",
-    "release:staging": ".drone/deploy.sh staging",
-    "release:production": ".drone/deploy.sh production",
     "example": "node examples",
     "example:watch": "nodemon --exec node examples",
     "example:inspect": "node --inspect examples",
