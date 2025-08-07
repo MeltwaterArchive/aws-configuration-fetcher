@@ -54,7 +54,7 @@
     "node": ">=12.13.0"
   },
   "resolutions": {
-    "aws-sdk": "2.771.0"
+    "aws-sdk": "2.814.0"
   },
   "dependencies": {
     "argument-contracts": "^1.1.0",
@@ -65,7 +65,7 @@
   "devDependencies": {
     "@meltwater/examplr": "^5.0.0",
     "ava": "^3.3.0",
-    "aws-sdk": "2.771.0",
+    "aws-sdk": "2.814.0",
     "del-cli": "^3.0.0",
     "documentation": "^13.0.2",
     "eslint": "^7.4.0",
@@ -79,7 +79,7 @@
     "nyc": "^15.0.0",
     "prettier": "^2.0.2",
     "serverless": "^2.1.1",
-    "serverless-offline": "^6.1.2",
+    "serverless-offline": "^8.1.0",
     "testdouble": "^3.16.1"
   }
 }
