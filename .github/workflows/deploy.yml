@@ -43,5 +43,4 @@ jobs:
 
       - name: Publish to NPM
         run: |
-          yarn run build
           .github/workflows/publish.sh
