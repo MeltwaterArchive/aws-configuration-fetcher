@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`createLocalStringConfigurationRequest 1`] = `
+ConfigurationRequest {
+  "adapter": [Function],
+  "key": "the/path",
+  "propertyName": "theName",
+  "type": "local",
+}
+`;
+
+exports[`createSecretStringConfigurationRequest 1`] = `
+ConfigurationRequest {
+  "adapter": [Function],
+  "key": "the/path",
+  "propertyName": "theName",
+  "type": "secret",
+}
+`;
+
+exports[`createSsmStringConfigurationRequest 1`] = `
+ConfigurationRequest {
+  "adapter": [Function],
+  "key": "the/path",
+  "propertyName": "theName",
+  "type": "ssm",
+}
+`;
