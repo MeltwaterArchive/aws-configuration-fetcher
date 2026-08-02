@@ -2,14 +2,12 @@
   "name": "@meltwater/aws-configuration-fetcher",
   "version": "1.1.6",
   "description": "A simple system for fetching configuration from both SSM and Secrets Manager in AWS",
+  "type": "module",
   "main": "index.js",
   "module": "lib/index.js",
   "sideEffects": false,
   "keywords": [
     "node"
-  ],
-  "mpkg": [
-    "umd/*"
   ],
   "homepage": "https://github.com/meltwater/aws-configuration-fetcher",
   "bugs": "https://github.com/meltwater/aws-configuration-fetcher/issues",
@@ -17,7 +15,7 @@
   "license": "MIT",
   "author": {
     "name": "Team Jackalope",
-    "email": "evan.sosenko@meltwater.com"
+    "email": "jackalope@meltwater.com"
   },
   "files": [
     "yarn.lock",
@@ -26,60 +24,51 @@
     "docs"
   ],
   "scripts": {
-    "docs": "documentation build ./index.js -f md > ./docs/README.md",
-    "postdocs": "npm-run-all format",
-    "test": "nyc ava",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "pretest": "npm-run-all lint",
-    "posttest": "serverless package",
-    "test:update": "ava --update-snapshots",
-    "test:watch": "ava --watch",
-    "test:inspect": "node --inspect node_modules/ava/profile",
-    "test:inspect:watch": "nodemon --inspect node_modules/ava/profile",
+    "test:update": "NODE_OPTIONS='--experimental-vm-modules' jest --updateSnapshot",
+    "test:watch": "NODE_OPTIONS='--experimental-vm-modules' jest --watch",
     "lint": "eslint --ignore-path .gitignore --ext .js .",
-    "preversion": "npm-run-all docs test",
+    "preversion": "npm-run-all test",
     "postversion": "git push && git push --tags",
-    "deploy": "serverless deploy --aws-s3-accelerate",
-    "example": "node examples",
-    "example:watch": "nodemon --exec node examples",
-    "example:inspect": "node --inspect examples",
-    "example:inspect:watch": "nodemon --exec node --inspect examples",
-    "offline": "serverless offline",
-    "offline:watch": "nodemon node_modules/.bin/serverless offline",
     "pretty": "prettier --ignore-path .gitignore --write '**/*.(js|json|graphql|md)'",
     "format": "npm-run-all --serial pretty format:*",
-    "format:ts": "eslint --ignore-path .gitignore --fix --ext .js .",
-    "report": "nyc report"
+    "format:ts": "eslint --ignore-path .gitignore --fix --ext .js ."
   },
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=20.0.0"
   },
   "resolutions": {
-    "aws-sdk": "2.771.0"
+    "ajv": "6.15.0",
+    "ansi-regex": "5.0.1",
+    "cross-spawn": "7.0.6",
+    "debug": "4.3.7",
+    "flatted": "3.4.2",
+    "glob-parent": "5.1.2",
+    "hosted-git-info": "2.8.9",
+    "json5": "2.2.3",
+    "lodash": "4.18.1",
+    "minimist": "1.2.8",
+    "path-parse": "1.0.7",
+    "semver": "7.8.5",
+    "shell-quote": "1.10.0",
+    "word-wrap": "1.2.4"
   },
   "dependencies": {
-    "argument-contracts": "^1.1.0",
-    "aws-xray-sdk-core": "3.2.0",
-    "cache-manager": "^3.4.0",
-    "esm": "^3.2.25"
+    "@aws-sdk/client-secrets-manager": "^3.900.0",
+    "@aws-sdk/client-ssm": "^3.900.0",
+    "aws-xray-sdk-core": "^3.10.0",
+    "cache-manager": "^3.6.3"
   },
   "devDependencies": {
-    "@meltwater/examplr": "^5.0.0",
-    "ava": "^3.3.0",
-    "aws-sdk": "2.771.0",
-    "del-cli": "^3.0.0",
-    "documentation": "^13.0.2",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^16.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^5.0.0",
-    "nodemon": "^2.0.1",
+    "jest": "^30.0.0",
     "npm-run-all": "^4.1.2",
-    "nyc": "^15.0.0",
     "prettier": "^2.0.2",
-    "serverless": "^2.1.1",
-    "serverless-offline": "^6.1.2",
-    "testdouble": "^3.16.1"
+    "testdouble": "^3.20.0"
   }
 }

@@ -5,5 +5,11 @@
     "class-methods-use-this": "error",
     "no-console": "error",
     "space-before-function-paren": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.spec.js"],
+      "env": { "jest": true }
+    }
+  ]
 }
