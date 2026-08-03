@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # required for npm OIDC trusted publishing
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,9 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Prepare npm token
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -41,6 +41,8 @@ jobs:
       - name: Run lint
         run: yarn lint
 
-      - name: Publish to NPM
-        run: |
-          .github/workflows/publish.sh
+      - name: Upgrade npm (OIDC trusted publishing requires npm >= 11.5.1)
+        run: npm install -g npm@latest
+
+      - name: Publish to NPM (OIDC trusted publisher)
+        run: .github/workflows/publish.sh
